@@ -1,15 +1,13 @@
 {
-  "name": "bchaddrjs",
-  "description": "Bitcoin Cash general purpose address translation.",
-  "main": "src/bchaddr.js",
-  "authors": [
-    "Emilio Almansi <hi@ealmansi.com>"
-  ],
+  "name": "btgaddrjs",
+  "description": "Bitcoin Gold general purpose address translation.",
+  "main": "src/btgaddr.js",
+  "authors": ["Masataka Morishita <masataka.morishita@ginco.co.jp>"],
   "license": "MIT",
   "keywords": [
     "bitcoin-cash",
     "bitcoin",
-    "bch",
+    "btg",
     "cryptocurrency",
     "address",
     "encoding",
@@ -18,12 +16,6 @@
     "bitpay",
     "cash-address"
   ],
-  "homepage": "https://github.com/ealmansi/bchaddrjs",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ]
+  "homepage": "https://github.com/GincoInc/btgaddrjs",
+  "ignore": ["**/.*", "node_modules", "bower_components", "test", "tests"]
 }

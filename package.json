@@ -1,16 +1,14 @@
 {
-  "name": "bchaddrjs",
-  "version": "0.5.2",
-  "description": "Bitcoin Cash general purpose address translation.",
-  "main": "src/bchaddr.js",
+  "name": "btgaddrjs",
+  "version": "0.1.0",
+  "description": "Bitcoin Gold general purpose address translation.",
+  "main": "src/btgaddr.js",
   "scripts": {
     "clean": "shx rm -rf dist/ docs/",
     "build": "webpack",
-    "lint": "standard --global describe --global it src/* test/*",
-    "pretest": "yarn lint",
     "test": "nyc --reporter=html --reporter=text mocha",
     "coveralls": "nyc report --reporter=text-lcov | coveralls",
-    "docs": "jsdoc src/bchaddr.js --destination docs",
+    "docs": "jsdoc src/btgaddr.js --destination docs",
     "readme": "mustache package.json README.tpl.md > README.md"
   },
   "engines": {
@@ -18,12 +16,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ealmansi/bchaddrjs.git"
+    "url": "git+ssh://git@github.com/GincoInc/btgaddrjs.git"
   },
   "keywords": [
-    "bitcoin-cash",
+    "bitcoin-gold",
     "bitcoin",
-    "bch",
+    "btg",
     "cryptocurrency",
     "address",
     "encoding",
@@ -32,12 +30,12 @@
     "bitpay",
     "cash-address"
   ],
-  "author": "Emilio Almansi <hi@ealmansi.com>",
+  "author": "Masataka Morishita <masataka.morishita@ginco.co.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ealmansi/bchaddrjs/issues"
+    "url": "https://github.com/GincoInc/btgaddrjs/issues"
   },
-  "homepage": "https://github.com/ealmansi/bchaddrjs#readme",
+  "homepage": "https://github.com/GincoInc/btgaddrjs#readme",
   "devDependencies": {
     "@babel/cli": "7.12.10",
     "@babel/core": "7.12.10",
@@ -51,14 +49,12 @@
     "nyc": "15.0.0",
     "shelljs": "0.8.3",
     "shx": "^0.3.3",
-    "standard": "14.3.2",
     "webpack": "5.11.0",
     "webpack-cli": "4.3.0"
   },
   "dependencies": {
     "bs58check": "2.1.2",
     "buffer": "^6.0.3",
-    "cashaddrjs": "0.4.4",
     "stream-browserify": "^3.0.0"
   }
 }

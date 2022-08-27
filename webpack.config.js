@@ -1,18 +1,18 @@
-const path = require('path');
-const pkg = require('./package.json');
+const path = require("path");
+const pkg = require("./package.json");
 
 const base = {
-  mode: 'production',
-  entry: path.resolve(__dirname, 'src', 'bchaddr.js'),
+  mode: "production",
+  entry: path.resolve(__dirname, "src", "btgaddr.js"),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    library: 'bchaddr',
-    libraryTarget: 'umd',
-    globalObject: 'this',
+    path: path.resolve(__dirname, "dist"),
+    library: "btgaddr",
+    libraryTarget: "umd",
+    globalObject: "this",
   },
   resolve: {
     fallback: {
-      stream: require.resolve('stream-browserify'),
+      stream: require.resolve("stream-browserify"),
     },
   },
   module: {
@@ -21,22 +21,20 @@ const base = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: 'defaults' }]
-            ]
-          }
-        }
-      }
-    ]
-  }
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
+      },
+    ],
+  },
 };
 
 module.exports = [
   Object.assign({}, base, {
     output: Object.assign({}, base.output, {
-      filename: 'bchaddrjs-' + pkg.version + '.js',
+      filename: "btgaddrjs-" + pkg.version + ".js",
     }),
     optimization: {
       minimize: false,
@@ -44,7 +42,7 @@ module.exports = [
   }),
   Object.assign({}, base, {
     output: Object.assign({}, base.output, {
-      filename: 'bchaddrjs-' + pkg.version + '.min.js',
+      filename: "btgaddrjs-" + pkg.version + ".min.js",
     }),
   }),
 ];
