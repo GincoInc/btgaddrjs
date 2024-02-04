@@ -128,16 +128,10 @@ VERSION_BYTE[Format.Legacy] = {};
 VERSION_BYTE[Format.Legacy][Network.Mainnet] = {};
 VERSION_BYTE[Format.Legacy][Network.Mainnet][Type.P2PKH] = 0;
 VERSION_BYTE[Format.Legacy][Network.Mainnet][Type.P2SH] = 5;
-VERSION_BYTE[Format.Legacy][Network.Testnet] = {};
-VERSION_BYTE[Format.Legacy][Network.Testnet][Type.P2PKH] = 111;
-VERSION_BYTE[Format.Legacy][Network.Testnet][Type.P2SH] = 196;
 VERSION_BYTE[Format.Goldaddr] = {};
 VERSION_BYTE[Format.Goldaddr][Network.Mainnet] = {};
 VERSION_BYTE[Format.Goldaddr][Network.Mainnet][Type.P2PKH] = 38;
 VERSION_BYTE[Format.Goldaddr][Network.Mainnet][Type.P2SH] = 23;
-// VERSION_BYTE[Format.Goldaddr][Network.Testnet] = {};
-// VERSION_BYTE[Format.Goldaddr][Network.Testnet][Type.P2PKH] = ?;
-// VERSION_BYTE[Format.Goldaddr][Network.Testnet][Type.P2SH] = ?;
 
 /**
  * Decodes the given address into its constituting hash, format, network and type.
@@ -188,20 +182,6 @@ function decodeBase58Address(address) {
           hash: hash,
           format: Format.Legacy,
           network: Network.Mainnet,
-          type: Type.P2SH,
-        };
-      case VERSION_BYTE[Format.Legacy][Network.Testnet][Type.P2PKH]:
-        return {
-          hash: hash,
-          format: Format.Legacy,
-          network: Network.Testnet,
-          type: Type.P2PKH,
-        };
-      case VERSION_BYTE[Format.Legacy][Network.Testnet][Type.P2SH]:
-        return {
-          hash: hash,
-          format: Format.Legacy,
-          network: Network.Testnet,
           type: Type.P2SH,
         };
       case VERSION_BYTE[Format.Goldaddr][Network.Mainnet][Type.P2PKH]:
@@ -273,49 +253,27 @@ function isGoldAddress(address) {
   return detectAddressFormat(address) === Format.Goldaddr;
 }
 
-// /**
-//  * Returns a boolean indicating whether the address is a mainnet address.
-//  * @static
-//  * @param {string} address - A valid Bitcoin Gold address in any format.
-//  * @returns {boolean}
-//  * @throws {InvalidAddressError}
-//  */
-// function isMainnetAddress(address) {
-//   return detectAddressNetwork(address) === Network.Mainnet;
-// }
-//
-// /**
-//  * Returns a boolean indicating whether the address is a testnet address.
-//  * @static
-//  * @param {string} address - A valid Bitcoin Gold address in any format.
-//  * @returns {boolean}
-//  * @throws {InvalidAddressError}
-//  */
-// function isTestnetAddress(address) {
-//   return detectAddressNetwork(address) === Network.Testnet;
-// }
+/**
+ * Returns a boolean indicating whether the address is a p2pkh address.
+ * @static
+ * @param {string} address - A valid Bitcoin Gold address in any format.
+ * @returns {boolean}
+ * @throws {InvalidAddressError}
+ */
+function isP2PKHAddress(address) {
+  return detectAddressType(address) === Type.P2PKH;
+}
 
-// /**
-//  * Returns a boolean indicating whether the address is a p2pkh address.
-//  * @static
-//  * @param {string} address - A valid Bitcoin Gold address in any format.
-//  * @returns {boolean}
-//  * @throws {InvalidAddressError}
-//  */
-// function isP2PKHAddress(address) {
-//   return detectAddressType(address) === Type.P2PKH;
-// }
-//
-// /**
-//  * Returns a boolean indicating whether the address is a p2sh address.
-//  * @static
-//  * @param {string} address - A valid Bitcoin Gold address in any format.
-//  * @returns {boolean}
-//  * @throws {InvalidAddressError}
-//  */
-// function isP2SHAddress(address) {
-//   return detectAddressType(address) === Type.P2SH;
-// }
+/**
+ * Returns a boolean indicating whether the address is a p2sh address.
+ * @static
+ * @param {string} address - A valid Bitcoin Gold address in any format.
+ * @returns {boolean}
+ * @throws {InvalidAddressError}
+ */
+function isP2SHAddress(address) {
+  return detectAddressType(address) === Type.P2SH;
+}
 
 /**
  * Error thrown when the address given as input is not a valid Bitcoin Gold address.
@@ -337,15 +295,12 @@ module.exports = {
   Type: Type,
   isValidAddress: isValidAddress,
   detectAddressFormat: detectAddressFormat,
-  // detectAddressNetwork: detectAddressNetwork,
   detectAddressType: detectAddressType,
   toLegacyAddress: toLegacyAddress,
   toGoldAddress: toGoldAddress,
   isLegacyAddress: isLegacyAddress,
   isGoldAddress: isGoldAddress,
-  // isMainnetAddress: isMainnetAddress,
-  // isTestnetAddress: isTestnetAddress,
-  // isP2PKHAddress: isP2PKHAddress,
-  // isP2SHAddress: isP2SHAddress,
+  isP2PKHAddress: isP2PKHAddress,
+  isP2SHAddress: isP2SHAddress,
   InvalidAddressError: InvalidAddressError,
 };
